@@ -1,0 +1,55 @@
+form {
+    margin-top: 24px;
+    display: flex;
+    margin-inline: auto;
+    height: 40px;
+    width: 400px;
+    align-items: center;
+    border: 1.3px solid rgb(23, 23, 23);
+    border-radius: 10px;
+}
+
+form:focus-within {
+    outline: solid #6EDE8A;
+    border-color: #6EDE8A;
+}
+
+form:hover {
+    border-width: 1.32px;
+}
+
+input {
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    flex-grow: 1;
+    outline: none;
+    padding: 7px 5px;
+}
+
+/* changes browser autofill background color to white*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+button {
+    cursor: pointer;
+    height: 100%;
+    width: 40px;
+    border: none;
+    border-radius: 10px;
+    background-image: url('../images/search-interface-symbol.png');
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: center;
+    background-color: white;
+    transition: background-color 70ms ease-in-out;
+}
+
+
+button:hover {
+    background-color: #b7efc590;
+}
