@@ -22,6 +22,7 @@ export default function Form() {
                 <input
                     type="text"
                     id='input'
+                    required
                     placeholder='Search...'
                     value={value}
                     onChange={(e) => setValue(e.target.value)} />
