@@ -2,18 +2,17 @@
 import './Form.css'
 // hooks
 import { useState } from 'react'
-import useFetch from '../hooks/useFetch'
+import { useNavigate } from 'react-router-dom'
 // component
 import ResultList from './ResultList'
 
 export default function Form() {
-    const [url, setUrl] = useState("")
     const [value, setValue] = useState("")
-    const [data] = useFetch(url)
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
+        navigate(`/${value}`)
         setValue("")
     }
     return (
@@ -30,7 +29,7 @@ export default function Form() {
             </form>
 
             {/* optionial chaining "?." to prevent errors */}
-            <ResultList data={data?.meals} />
+            {/* <ResultList/> */}
         </>
 
     )
