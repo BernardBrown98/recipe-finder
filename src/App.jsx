@@ -1,6 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
 // styles 
 import './App.css'
+// hooks
+import { Routes, Route } from 'react-router-dom'
 // components
 import Form from './components/Form'
 // pages
@@ -20,7 +21,6 @@ function App() {
           <Route path='/recipes/:id' element={<Recipe />} />
           <Route path='/not-found' element={<NotFound />} />
         </Route>
-
       </Routes>
     </div>
   )

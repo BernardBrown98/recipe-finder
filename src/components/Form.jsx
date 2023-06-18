@@ -3,8 +3,6 @@ import './Form.css'
 // hooks
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// component
-import ResultList from './ResultList'
 
 export default function Form() {
     const [value, setValue] = useState("")
@@ -27,9 +25,6 @@ export default function Form() {
                     onChange={(e) => setValue(e.target.value)} />
                 <button></button>
             </form>
-
-            {/* optionial chaining "?." to prevent errors */}
-            {/* <ResultList/> */}
         </>
 
     )

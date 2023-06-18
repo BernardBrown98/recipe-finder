@@ -1,18 +1,17 @@
+// styles
+import './ResultList.css'
 // hooks
 import { Link, useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
-// styles
-import './ResultList.css'
 // components
 import Form from './Form'
+import Pagination from './Pagination'
 
 export default function ResultList() {
     const { searchTerm } = useParams()
+    console.log(searchTerm)
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
-    const { data, isLoading } = useFetch(url)
-
-    // optionial chaining "?." to prevent errors
-    const recipes = data?.meals
+    const { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages } = useFetch(url)
 
     return (
         <>
@@ -33,6 +32,11 @@ export default function ResultList() {
                     </div>
                 ))}
             </main>
+            <Pagination
+                pages={pages}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                totalPages={totalPages} />
         </>
 
     )

@@ -1,3 +1,5 @@
+// hooks
+import usePagination from '../hooks/usePagination'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +8,8 @@ export default function useFetch(url) {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const searchTerm = url.slice(url.indexOf('?s=') + 3)
+    const { recipes, setCurrentPage, pages, currentPage, totalPages } = usePagination(8, data)
+
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true)
@@ -17,11 +21,13 @@ export default function useFetch(url) {
                 console.log(res)
                 const json = await res.json()
                 setIsLoading(false)
-                if (json.meals !== null) {
-                    setData(json)
+                if (json.meals === null) {
+                    navigate('/not-found', { state: { message: searchTerm } })
                 }
                 else {
-                    navigate('/not-found', { state: { message: searchTerm } })
+                    setData(json.meals)
+                    // resets pagination when current page is higher than 1 and new data is fetched
+                    setCurrentPage(1)
                 }
 
             }
@@ -32,5 +38,5 @@ export default function useFetch(url) {
         }
         getData()
     }, [url])
-    return { data, isLoading }
+    return { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages }
 }
