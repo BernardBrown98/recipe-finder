@@ -7,7 +7,7 @@ import Form from './components/Form'
 // pages
 import Home from './pages/Home'
 import Recipe from './pages/recipe/Recipe'
-import ResultList from './components/ResultList'
+import ResultList from './pages/result-list/ResultList'
 import NotFound from './pages/not-found/NotFound'
 
 function App() {

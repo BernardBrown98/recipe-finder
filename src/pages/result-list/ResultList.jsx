@@ -2,10 +2,11 @@
 import './ResultList.css'
 // hooks
 import { Link, useParams } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../../hooks/useFetch'
 // components
-import Form from './Form'
-import Pagination from './Pagination'
+import Form from '../../components/Form'
+import Pagination from '../../components/Pagination'
+import Spinner from '../../components/Spinner'
 
 export default function ResultList() {
     const { searchTerm } = useParams()
@@ -16,7 +17,7 @@ export default function ResultList() {
     return (
         <>
             <Form />
-            {isLoading && <p>Loading....</p>}
+            {isLoading && <Spinner />}
             <main className='grid'>
                 {recipes && recipes.map(recipe => (
                     <div key={recipe.idMeal} className='recipes'>
