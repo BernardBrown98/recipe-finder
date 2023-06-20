@@ -10,7 +10,7 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate(`/${value}`)
+        navigate(`/search/${value}`)
         setValue("")
     }
     return (

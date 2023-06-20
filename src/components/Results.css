@@ -42,6 +42,10 @@
     cursor: pointer;
 }
 
+.text-container a {
+    text-decoration: none;
+}
+
 .text-container p {
     color: rgb(104, 104, 104);
     font-weight: 500;

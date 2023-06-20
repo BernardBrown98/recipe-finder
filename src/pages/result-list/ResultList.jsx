@@ -1,36 +1,40 @@
 // styles
-import './ResultList.css'
+// import './ResultList.css'
 // hooks
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
+import { useEffect, useState } from 'react'
 // components
 import Form from '../../components/Form'
 import Pagination from '../../components/Pagination'
 import Spinner from '../../components/Spinner'
+import Results from '../../components/Results'
 
 export default function ResultList() {
-    const { searchTerm } = useParams()
-    console.log(searchTerm)
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+    const { searchTerm, area } = useParams()
+    console.log("NEW LOAD")
+    const path = () => {
+        return area === undefined ?
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+            :
+            `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+    }
+    const [url, setUrl] = useState(path)
     const { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages } = useFetch(url)
+
+    useEffect(() => {
+        setUrl(path)
+    }, [searchTerm])
+
 
     return (
         <>
             <Form />
             {isLoading && <Spinner />}
+            {area && <h2 style={{ marginTop: '30px', fontSize: '1.7rem' }}>{area} Cuisine</h2>}
             <main className='grid'>
                 {recipes && recipes.map(recipe => (
-                    <div key={recipe.idMeal} className='recipes'>
-                        <Link to={`/recipes/${recipe.idMeal}`}>
-                            <div className='img-container'>
-                                <img src={recipe.strMealThumb} alt="" />
-                            </div>
-                        </Link>
-                        <div className='text-container'>
-                            <p>{recipe.strArea}</p>
-                            <h3>{recipe.strMeal}</h3>
-                        </div>
-                    </div>
+                    <Results key={recipe.idMeal} {...recipe} />
                 ))}
             </main>
             <Pagination

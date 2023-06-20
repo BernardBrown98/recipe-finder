@@ -8,7 +8,7 @@ export default function useFetch(url) {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const searchTerm = url.slice(url.indexOf('?s=') + 3)
-    const { recipes, setCurrentPage, pages, currentPage, totalPages } = usePagination(8, data)
+    const { recipes, setCurrentPage, pages, currentPage, totalPages } = usePagination(12, data)
 
     useEffect(() => {
         const getData = async () => {
@@ -22,7 +22,7 @@ export default function useFetch(url) {
                 const json = await res.json()
                 setIsLoading(false)
                 if (json.meals === null) {
-                    navigate('/not-found', { state: { message: searchTerm } })
+                    navigate('/not-found', { state: { message: searchTerm }, replace: true })
                 }
                 else {
                     setData(json.meals)

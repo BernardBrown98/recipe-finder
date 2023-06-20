@@ -17,7 +17,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} >
           <Route path='/' element={<Form />} />
-          <Route path='/:searchTerm' element={<ResultList />} />
+          <Route path='/search/:searchTerm' element={<ResultList />} />
+          <Route path='/area/:area' element={<ResultList />} />
           <Route path='/recipes/:id' element={<Recipe />} />
           <Route path='/not-found' element={<NotFound />} />
         </Route>

@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 export default function Pagination(recipesPerPage, data) {
-    console.log(data)
     const [currentPage, setCurrentPage] = useState(1)
     const lastRecipeIndex = recipesPerPage * currentPage
     const firstRecipeIndex = lastRecipeIndex - recipesPerPage
