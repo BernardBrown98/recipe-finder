@@ -38,5 +38,5 @@ export default function useFetch(url) {
         }
         getData()
     }, [url])
-    return { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages }
+    return { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages, data: data?.[0] }
 }

@@ -1,5 +1,3 @@
-// styles
-// import './ResultList.css'
 // hooks
 import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
@@ -31,7 +29,7 @@ export default function ResultList() {
         <>
             <Form />
             {isLoading && <Spinner />}
-            {area && <h2 style={{ marginTop: '30px', fontSize: '1.7rem' }}>{area} Cuisine</h2>}
+            {area && <h2 style={{ marginTop: '30px' }}>{area} Recipes</h2>}
             <main className='grid'>
                 {recipes && recipes.map(recipe => (
                     <Results key={recipe.idMeal} {...recipe} />
