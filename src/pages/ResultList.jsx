@@ -1,15 +1,14 @@
 // hooks
 import { useParams } from 'react-router-dom'
-import useFetch from '../../hooks/useFetch'
+import useFetch from '../hooks/useFetch'
 import { useEffect, useState } from 'react'
 // components
-import Pagination from '../../components/Pagination'
-import Spinner from '../../components/Spinner'
-import Results from '../../components/Results'
+import Pagination from '../components/Pagination'
+import Spinner from '../components/Spinner'
+import Results from '../components/Results'
 
 export default function ResultList() {
     const { searchTerm, area } = useParams()
-    console.log("NEW LOAD")
     const path = () => {
         if (searchTerm === undefined && area === undefined) return `https://www.themealdb.com/api/json/v2/9973533/latest.php`
         return area === undefined ?

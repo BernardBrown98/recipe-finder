@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 // pages
 import Home from './pages/Home'
 import Recipe from './pages/recipe/Recipe'
-import ResultList from './pages/result-list/ResultList'
+import ResultList from './pages/ResultList'
 import NotFound from './pages/not-found/NotFound'
 import Latest from './pages/Latest'
 

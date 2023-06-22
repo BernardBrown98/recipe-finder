@@ -1,4 +1,4 @@
-import ResultList from "./result-list/ResultList";
+import ResultList from "./ResultList";
 
 export default function Latest() {
     return (

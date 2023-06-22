@@ -18,7 +18,6 @@ export default function useFetch(url) {
                 if (!res.ok) {
                     throw new Error(res.statusText)
                 }
-                console.log(res)
                 const json = await res.json()
                 setIsLoading(false)
                 if (json.meals === null) {
