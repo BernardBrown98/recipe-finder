@@ -12,5 +12,11 @@ export default function Pagination(recipesPerPage, data) {
     for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
     }
-    return { recipes, setCurrentPage, pages, currentPage, totalPages }
+
+    const handlePageChange = (func) => {
+        window.scrollTo(0, 0)
+        return func
+    }
+
+    return { recipes, setCurrentPage, pages, currentPage, totalPages, handlePageChange }
 }

@@ -6,9 +6,8 @@ export default function NotFound() {
     const searchTerm = location.state.message
 
     return (
-        <div className="not-found">
-            <Form />
-            <h3>0 results found for "{searchTerm}".</h3>
+        <div style={{ marginTop: '30px' }} className="not-found">
+            <h2>0 results found for "{searchTerm}".</h2>
             <p>Please try another search term.</p>
         </div>
     )

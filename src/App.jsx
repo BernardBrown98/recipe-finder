@@ -2,13 +2,12 @@
 import './App.css'
 // hooks
 import { Routes, Route } from 'react-router-dom'
-// components
-import Form from './components/Form'
 // pages
 import Home from './pages/Home'
 import Recipe from './pages/recipe/Recipe'
 import ResultList from './pages/result-list/ResultList'
 import NotFound from './pages/not-found/NotFound'
+import Latest from './pages/Latest'
 
 function App() {
 
@@ -16,7 +15,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Home />} >
-          <Route path='/' element={<Form />} />
+          <Route path='/' element={<Latest />} />
           <Route path='/search/:searchTerm' element={<ResultList />} />
           <Route path='/area/:area' element={<ResultList />} />
           <Route path='/recipes/:id' element={<Recipe />} />

@@ -4,11 +4,11 @@ import './Pagination.css'
 import leftArrow from "../images/arrow-left.svg"
 import rightArrow from "../images/arrow-right.svg"
 
-export default function Pagination({ setCurrentPage, pages, currentPage, totalPages }) {
+export default function Pagination({ setCurrentPage, pages, currentPage, totalPages, handlePageChange }) {
     return (
         <nav className="pagination">
             {currentPage > 1 &&
-                <a onClick={() => setCurrentPage(prevPage => prevPage - 1)}>
+                <a onClick={() => handlePageChange(setCurrentPage(prevPage => prevPage - 1))}>
                     <img src={leftArrow} alt="" />
                     <span>prev</span>
                 </a>
@@ -17,12 +17,12 @@ export default function Pagination({ setCurrentPage, pages, currentPage, totalPa
                 <button
                     className={page == currentPage ? 'active' : ''}
                     key={index}
-                    onClick={() => setCurrentPage(page)}>
+                    onClick={() => page !== currentPage && handlePageChange(setCurrentPage(page))}>
                     {page}
                 </button>
             ))}
             {currentPage < totalPages &&
-                <a onClick={() => setCurrentPage(prevPage => prevPage + 1)}>
+                <a onClick={() => handlePageChange(setCurrentPage(prevPage => prevPage + 1))}>
                     <span>next</span>
                     <img src={rightArrow} alt="" />
                 </a>

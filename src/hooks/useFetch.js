@@ -8,7 +8,7 @@ export default function useFetch(url) {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const searchTerm = url.slice(url.indexOf('?s=') + 3)
-    const { recipes, setCurrentPage, pages, currentPage, totalPages } = usePagination(12, data)
+    const { recipes, setCurrentPage, pages, currentPage, totalPages, handlePageChange } = usePagination(12, data)
 
     useEffect(() => {
         const getData = async () => {
@@ -38,5 +38,5 @@ export default function useFetch(url) {
         }
         getData()
     }, [url])
-    return { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages, data: data?.[0] }
+    return { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages, handlePageChange, data: data?.[0] }
 }
