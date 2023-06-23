@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Recipe from './pages/recipe/Recipe'
 import ResultList from './pages/ResultList'
-import NotFound from './pages/not-found/NotFound'
+import NotFound from './pages/NotFound'
 import Latest from './pages/Latest'
 
 function App() {
