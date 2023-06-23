@@ -14,8 +14,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/recipe-finder' element={<Home />} >
-          <Route path='/recipe-finder' element={<Latest />} />
+        <Route path='/' element={<Home />} >
+          <Route path='/' element={<Latest />} />
           <Route path='/search/:searchTerm' element={<ResultList />} />
           <Route path='/area/:area' element={<ResultList />} />
           <Route path='/recipes/:id' element={<Recipe />} />
