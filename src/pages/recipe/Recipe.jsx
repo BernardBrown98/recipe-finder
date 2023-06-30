@@ -26,7 +26,8 @@ export default function Recipe() {
                     {isLoading && <Spinner />}
                     <h2>{data.strMeal}</h2>
                     <div className='iframe-container'>
-                        <iframe src={data.strYoutube.replace('watch?v=', 'embed/') + '?autoplay=1&mute=1'}></iframe>
+                        {!data.strYoutube && <img src={data.strMealThumb}></img>}
+                        {data.strYoutube && < iframe src={data.strYoutube.replace('watch?v=', 'embed/') + '?autoplay=1&mute=1'}></iframe>}
                     </div>
                     <h3>Ingredients</h3>
                     <ul>
@@ -37,7 +38,7 @@ export default function Recipe() {
                     <h3>Directions</h3>
                     <p>{data.strInstructions}</p>
                 </div>
-            </div>
+            </div >
 
 
         )

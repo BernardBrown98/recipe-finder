@@ -1,11 +1,12 @@
+// styles
+import './ResultList.css'
 // hooks
 import { useParams } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../../hooks/useFetch'
 import { useEffect, useState } from 'react'
 // components
-import Pagination from '../components/Pagination'
-import Spinner from '../components/Spinner'
-import Results from '../components/Results'
+import Spinner from '../../components/Spinner'
+import Results from '../../components/Results'
 
 export default function ResultList() {
     const { searchTerm, area } = useParams()
@@ -17,28 +18,31 @@ export default function ResultList() {
             `https://www.themealdb.com/api/json/v2/9973533/filter.php?a=${area}`
     }
     const [url, setUrl] = useState(path)
-    const { isLoading, recipes, setCurrentPage, pages, currentPage, totalPages, handlePageChange } = useFetch(url)
+    const { isLoading, recipes } = useFetch(url)
 
+    const recipesPerLoad = 16
+    const [next, setNext] = useState(recipesPerLoad) //16 is the amount of inital recipes and amount of recipes loaded in
     useEffect(() => {
         setUrl(path)
     }, [searchTerm])
 
-
     return (
-        <div style={{ paddingInline: '30px', maxWidth: '1280px', margin: '0 auto' }}>
+        <div className='result-list' >
             {isLoading && <Spinner />}
             {area && <h2 style={{ marginTop: '30px' }}>{area} Recipes</h2>}
             <main className='grid'>
-                {recipes && recipes.map(recipe => (
+                {recipes && recipes.slice(0, next)?.map(recipe => (
                     <Results key={recipe.idMeal} {...recipe} />
                 ))}
             </main>
-            <Pagination
-                pages={pages}
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                handlePageChange={handlePageChange} />
+
+            {next < recipes?.length &&
+                <button
+                    className='btn'
+                    onClick={() => setNext(prevNext => prevNext + recipesPerLoad)}>
+                    Load More
+                </button>
+            }
         </div >
 
     )
