@@ -15,6 +15,12 @@ export default function Form({ open, setOpen }) {
         setValue("")
     }
 
+    // closes mobile keyboard when Enter key is used to submit form
+    const handleEnter = (e) => {
+        if (e.key == 'Enter') {
+            e.target.blur();
+        }
+    }
     useEffect(() => {
         const handleWidthChange = () => setWindowWidth(window.innerWidth)
         window.addEventListener('resize', handleWidthChange)
@@ -23,7 +29,10 @@ export default function Form({ open, setOpen }) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={open ? 'open form' : 'closed form'}>
+            <form
+                onKeyUp={handleEnter}
+                onSubmit={handleSubmit}
+                className={open ? 'open form' : 'closed form'}>
                 <input
                     type="text"
                     id='input'
